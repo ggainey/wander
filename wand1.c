@@ -20,7 +20,7 @@ int     vrblook, vrbinit, vrbstar, vrbhist;
 int     vrbsnoop, vrbgoto, vrbvars, vrbvers;
 int     lstdirvrb;
 int     objnum1, objnum2, objall;
-FILE   *fpungot = NULL, *monfp = NULL;
+FILE   *monfp = NULL;
 long    lbegaddr = 0L;
 long    ungotaddr = 0L;
 
