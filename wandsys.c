@@ -38,7 +38,7 @@ FILE *wopen(const char *file, const char *rwflg) {
     }
     return fp;
 #else
-    return fopen(file, rwflg);continue wand2.c
+    return fopen(file, rwflg);
 #endif
 }
 
