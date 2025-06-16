@@ -3,6 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include <signal.h> // <-- add this
 #include "wanddef.h"
 
 /*
@@ -583,8 +584,14 @@ void setup(int argc, char *argv[]) {
     int rflag = 0, n = 0, i, lastrw;
     char *cp;
 
-    signal(1, quit);
-    signal(2, quit);
+    // Modern (portable, explicit) signal handling
+    struct sigaction sa;
+    sa.sa_handler = quit;
+    sigemptyset(&sa.sa_mask);
+    sa.sa_flags = 0;
+    sigaction(SIGINT, &sa, NULL);   // handle Ctrl+C
+    sigaction(SIGHUP, &sa, NULL);   // handle hangup
+
     var[CUR_LOC] = var[PREV_LOC] = 1;
     var[NUM_CARRY] = 0;
     var[MAX_CARRY] = max_carry;
