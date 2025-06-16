@@ -20,8 +20,7 @@ export: $(EXPORT)
 	tar -czf Wander.tgz $(EXPORT)
 	ls -l Wander.tgz
 
-wander: Wander
-Wander: $(DOT_OS)
+wander: wand1.o wand2.o wandglb.o wandsys.o
 	$(CC) $(DOT_OS) -o $@
 
 wand1.o: wand1.c wanddef.h
