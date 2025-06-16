@@ -23,9 +23,9 @@ export: $(EXPORT)
 wander: wand1.o wand2.o wandglb.o wandsys.o
 	$(CC) $(DOT_OS) -o $@
 
-wand1.o: wand1.c wanddef.h
+wand1.o: wand1.c wanddef.h wandsys.o
 
-wand2.o: wand2.c wanddef.h
+wand2.o: wand2.c wanddef.h wandsys.o
 
 wandglb.o: wandglb.c wanddef.h
 
