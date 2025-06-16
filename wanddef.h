@@ -203,6 +203,13 @@ extern char              locseen[], locstate[];
 extern int               var[];
 extern FILE             *mfp, *wfp;
 
+// Externs from wand1.c
+extern int              objall;
+extern FILE            *monfp;
+extern char             ungotlin[BUFSIZE];
+extern FILE            *fpungot;
+extern long             ungotaddr;
+
 /* Function prototypes (ANSI C) */
 int     main(int argc, char *argv[]);
 void    prloc(void);
