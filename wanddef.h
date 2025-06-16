@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <sys/stat.h>
+#include <unistd.h>      // for uid_t
+
 
 /* WANDDEF.H -- Non-deterministic fantasy story tool header
 ** Global definitions
@@ -177,6 +179,37 @@ struct ndxstr {
     char i_state;
     long i_addr;
 };
+
+/* Structs and functions from wandsys.c used in wand1.c */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* --- Structs from wandsys.c that may be referenced --- */
+#ifdef NOFTELL
+struct wtellstr {
+    FILE *wt_fp;
+    long wt_addr;
+};
+extern struct wtellstr wt[];  // array size defined in wandsys.c
+#endif
+
+/* --- Functions from wandsys.c used in wand1.c --- */
+extern FILE *fpungot;
+extern FILE *wopen(const char *file, const char *rwflg);
+extern int wseek(FILE *fp, long addr, int mode);
+extern int wgetc(FILE *fp);
+extern long wtell(FILE *fp);
+extern int wclose(FILE *fp);
+
+#ifdef NOFTELL
+extern int wtfind(FILE *fp);
+#endif
+
+#ifdef __cplusplus
+}
+#endif
 
 /* Externals (globals in wandglb.c) */
 extern struct ndxstr    ndx[];
